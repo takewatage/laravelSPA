@@ -7,59 +7,103 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## About Laravel
+## Laravel + Vue + vagrant
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+laravelとvue.jsを使ってSPAでなんか作る
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+# ~環境構築~
+## VirtualBoxインストール
+``` https://www.virtualbox.org/wiki/Downloads```
+## Vagrantのインストール
+``` https://www.vagrantup.com/downloads.html```
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
+## Homestead vagrant box のダウンロード
+```
+vagrant box add laravel/homestead 
 
-## Learning Laravel
+//確認
+>vagrant box list
+laravel/homestead (virtualbox, 6.3.0)
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
+任意のディレクトリ作成今回はD:にそのままいれたんご
+```
+>cd D: 
+>git clone https://github.com/laravel/homestead.git Homestead
+```
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+10年後。。。HomesteadにいどうしてHomestead.yaml（設定ファイル的な奴） を作成。
+```
+cd .\Homestead
+bash init.sh
+```
+このコマンド打っても無反応だったので、エクスプローラーからinit.shをだぶるクリックしたらつくられた★<br>
+Homestead.yamlを編集
 
-## Laravel Sponsors
+```
+ip: "192.168.10.10"  //任意
+memory: 2048
+cpus: 1
+provider: virtualbox
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell):
+authorize: ~/.ssh/id_rsa.pub  //公開鍵の場所
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
+keys:
+    - ~/.ssh/id_rsa  //秘密鍵の場所
 
-## Contributing
+folders:
+    - map: D:/Homestead/code/   //
+      to: /home/vagrant/code/
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+sites:
+    - map: homestead.test
+      to: /home/vagrant/code/laravelSPA/public
 
-## Security Vulnerabilities
+databases:
+    - homestead
+```
+編集したら"vagrant up"して構築完了
+sshしていろいろインストール
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```
+vagrant ssh
+cd /home/vagrant/code/laravelSPA
+composer up
+npm install
+```
 
-## License
+```http://192.168.10.10```でlaravelの画面がでればおわり
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+# vagrant 使用方法
+### 起動
+
+``
+vagrant up
+``
+
+### 止める
+
+``
+vagrant halt
+``
+
+### 再起動
+
+``
+vagrant reload
+``
+
+### ssh接続
+
+``
+vagrant ssh
+``
+
+### yamlを更新
+
+``
+vagrant provision
+``
+
+
