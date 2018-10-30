@@ -11,7 +11,7 @@
 
 laravelとvue.jsを使ってSPAでなんか作る
 
-# ~環境構築~
+# 環境構築
 ## VirtualBoxインストール
 ``` https://www.virtualbox.org/wiki/Downloads```
 ## Vagrantのインストール
@@ -41,23 +41,29 @@ bash init.sh
 Homestead.yamlを編集
 
 ```
-ip: "192.168.10.10"  //任意
+ip: "192.168.10.10"
 memory: 2048
 cpus: 1
 provider: virtualbox
 
-authorize: ~/.ssh/id_rsa.pub  //公開鍵の場所
+#秘密鍵の場所
+authorize: ~/.ssh/id_rsa.pub
 
+#秘密鍵の場所
 keys:
-    - ~/.ssh/id_rsa  //秘密鍵の場所
+    - ~/.ssh/id_rsa
 
+#ローカルとvagrantのディレクトリをマウントする設定
 folders:
-    - map: D:/Homestead/code/   //
+    - map: D:/Homestead/code/
       to: /home/vagrant/code/
 
+#hostの設定
 sites:
-    - map: homestead.test
+    - map: dev.laravelspa.com 
       to: /home/vagrant/code/laravelSPA/public
+    - map: dev.phpmyadmin
+　　  to: /usr/share/phpmyadmin/
 
 databases:
     - homestead
@@ -72,10 +78,36 @@ composer up
 npm install
 ```
 
-```http://192.168.10.10```でlaravelの画面がでればおわり
+yamlのipで設定した[http://192.168.10.10]()でlaravelの画面がでればおｋ
+
+# phpMyadmin設定
+phpMyAdminは、MySQLデータベースを使うためのインターフェースが備わったWebアプリケーション。便利
+
+```
+sudo apt-get update
+sudo apt-get install phpmyadmin
+```
+``Do you want to continue? [Y/n]``
+と聞かれるので　ｙで続ける
+その後使用サーバーを聞かれるのでapache2を選択
+
+Homestead.yamlの修正
+```
+# sites:の後に以下の文を追記
+　　
+　　　　 -map: dev.phpmyadmin
+　　　　　to: /usr/share/phpmyadmin/
+```
+``vagrant provison``で更新
+
+vagrant up で立ち上げた後
+[dev.phpmyadmin](dev.phpmyadmin)にブラウザから接続するとphpmyadminが使用可能になっている
+デフォルトユーザー名　homestead
+デフォルトパスワード　secret
 
 
-# vagrant 使用方法
+
+# vagrant コマンド
 ### 起動
 
 ``
