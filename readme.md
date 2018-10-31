@@ -68,12 +68,17 @@ sites:
 databases:
     - homestead
 ```
-編集したら"vagrant up"して構築完了
-sshしていろいろインストール
+編集したら"vagrant up"
+
+sshしてクローンしていろいろインストール。
+ローカルに/codeっていうディレクトリ作っといた方がいいかも？
+例：D:/Homestead/code/
 
 ```
 vagrant ssh
-cd /home/vagrant/code/laravelSPA
+cd /home/vagrant/code
+git clone https://github.com/topopopo/laravelSPA.git
+cd /laravelSPA
 composer up
 npm install
 ```

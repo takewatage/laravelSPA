@@ -17,6 +17,14 @@
         "laravel-mix": "^2.0",
         "lodash": "^4.17.5",
         "popper.js": "^1.12",
-        "vue": "^2.5.7"
+        "vue": "^2.5.7",
+        "linq": "^3.1.1",
+        "node-sass": "^4.9.3",
+        "rxjs": "^6.3.3",
+        "vform": "^1.0.0",
+        "vue-router": "^3.0.1"
+    },
+    "dependencies": {
+        "vuex-router-sync": "^5.0.0"
     }
 }
