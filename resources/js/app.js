@@ -7,6 +7,9 @@
 import Vue from 'vue';
 import router from './router'
 import App from './components/App'
+import Buefy from 'buefy'
+
+Vue.use(Buefy)
 
 require('./bootstrap');
 

@@ -1,79 +1,79 @@
 <template>
     <div>
-       <div class="content">
-                <div class="title m-b-md">
-                    POPOPO!!
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+       <div class="top-wrapper">
+            <div class="container">
+                <h1>LOVE THE LIFE YOU LIVE. <br>LIVE THE LIFE YOU LOVE.</h1>
+                <p>Kodoはチームを活性化させる日報共有ツールです。<br>チームのみんなが自分らしく働くために、Kodoで毎日をシェアしましょう。</p>
             </div>
-
+            <center>
+                <a class="button is-primary is-inverted is-outlined login">Login</a>
+                    <br>or<br>
+                <a class="button is-primary is-inverted is-outlined">Sign up</a>
+            </center>
+        </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'welcome'
-}
+  name: "welcome",
+  data() {
+    return {};
+  }
+};
 </script>
 
 <style lang="scss" scoped>
-html, body {
-    background-color: #fff;
-    color: #636b6f;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 200;
-    height: 100vh;
-    margin: 0;
+.top-wrapper {
+  padding: 150px 0 0 0;
+  background-image: url("../../img/KeyVisual.jpg");
+  background-size: cover;
+  color: white;
+  text-align: center;
 }
 
-.full-height {
-    height: 100vh;
+.top-wrapper h1 {
+  opacity: 0.7;
+  font-size: 45px;
+  letter-spacing: 5px;
 }
 
-.flex-center {
-    align-items: center;
-    display: flex;
-    justify-content: center;
+.top-wrapper p {
+  opacity: 0.7;
+  font-size: 16px;
+  margin-bottom: 20px;
 }
 
-.position-ref {
-    position: relative;
+.container {
+  width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
 }
 
-.top-right {
-    position: absolute;
-    right: 10px;
-    top: 18px;
+.container p {
+  padding: 30px 0 0px 0;
 }
 
-.content {
-    text-align: center;
+center {
+  padding: 30px 0 60px 0;
+  .login {
+    padding: 0 19px;
+  }
 }
 
-.title {
-    font-size: 84px;
+.content-wrapper {
+  padding: 0.5em 1em;
+  margin-top: 5px;
+  background: white;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+.content-wrapper p {
+  margin: 0;
+  padding: 0;
 }
 
-.links > a {
-    color: #636b6f;
-    padding: 0 25px;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: .1rem;
-    text-decoration: none;
-    text-transform: uppercase;
-}
-
-.m-b-md {
-    margin-bottom: 30px;
+.contribute {
+  margin-top: 20px;
 }
 </style>
 
