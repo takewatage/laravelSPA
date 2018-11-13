@@ -14,3 +14,5 @@ yarn-error.log
 .phpunit.result.cache
 package-lock.json
 composer.lock
+/public/js/app.js
+/public/css/app.css
