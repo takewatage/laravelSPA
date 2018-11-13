@@ -1,0 +1,78 @@
+.flex {
+    display: flex;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.align-content-center {
+    align-items: center;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.d-none {
+    display: none;
+}
+
+.d-block {
+    display: block;
+}
+
+.pc-none {
+    display: none;
+    @include mq(mb) {
+        display: block;
+    }
+}
+
+.pc-flex-none {
+    display: none;
+    &.tab {
+        @include mq(tab) {
+            display: flex;
+        }
+    }
+    &.mb {
+        @include mq(mb) {
+            display: flex;
+        }
+    }
+}
+
+.tab-none {
+    display: block;
+    @include mq(tab) {
+        display: none;
+    }
+}
+
+.tab-flex-none {
+    display: flex;
+    @include mq(tab) {
+        display: none;
+    }
+}
+
+.sp-none {
+    display: block;
+    @include mq(mb) {
+        display: none;
+    }
+}
+
+.sp-flex-none {
+    display: flex;
+    @include mq(mb) {
+        display: none;
+    }
+}
+
+.vs-button--text {
+    font-family: "あずきフォント"
+}

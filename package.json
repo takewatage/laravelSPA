@@ -32,6 +32,7 @@
         "vue-lazyload": "1.2.6",
         "vue-material": "1.0.0-beta-10.2",
         "vue-template-compiler": "2.5.17",
+        "vuesax": "^3.7.1",
         "vuex-router-sync": "^5.0.0"
     }
 }

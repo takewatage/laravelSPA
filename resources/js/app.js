@@ -1,17 +1,20 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-import Vue from 'vue';
-import router from './router'
-import App from './components/App'
-import Buefy from 'buefy'
+import Vue from "vue";
+import router from "./router";
+import App from "./components/App";
+import Vuesax from "vuesax";
 
-Vue.use(Buefy)
+import "vuesax/dist/vuesax.css"; //Vuesax styles
+Vue.use(Vuesax);
+// import Buefy from 'buefy'
 
-require('./bootstrap');
+// Vue.use(Buefy)
+
+require("./bootstrap");
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -21,5 +24,5 @@ require('./bootstrap');
 
 window.Vue = new Vue({
     router,
-    ...App,
-})
+    ...App
+});
