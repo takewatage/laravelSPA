@@ -1,5 +1,19 @@
+
+
+a:hover {
+    text-decoration: unset;
+}
+
+input[type="color"] {
+    cursor: pointer;
+}
+
 .flex {
     display: flex;
+}
+
+.f-warp {
+    flex-wrap: wrap;
 }
 
 .justify-content-center {
@@ -11,9 +25,17 @@
 }
 
 .flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-center();
+}
+
+ul, ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.t-center {
+    text-align: center;
 }
 
 .d-none {
@@ -26,53 +48,99 @@
 
 .pc-none {
     display: none;
-    @include mq(mb) {
+    @include mq(md) {
         display: block;
     }
 }
 
 .pc-flex-none {
     display: none;
-    &.tab {
-        @include mq(tab) {
+    &.lg {
+        @include mq(lg) {
             display: flex;
         }
     }
-    &.mb {
-        @include mq(mb) {
+    &.md {
+        @include mq(md) {
             display: flex;
         }
     }
 }
 
-.tab-none {
+.lg-none {
     display: block;
-    @include mq(tab) {
+    @include mq(lg) {
         display: none;
     }
 }
 
 .tab-flex-none {
     display: flex;
-    @include mq(tab) {
+    @include mq(lg) {
         display: none;
     }
 }
 
 .sp-none {
     display: block;
-    @include mq(mb) {
+    @include mq(md) {
         display: none;
     }
 }
 
 .sp-flex-none {
     display: flex;
-    @include mq(mb) {
+    @include mq(md) {
         display: none;
     }
 }
 
-.vs-button--text {
-    font-family: "あずきフォント"
+[v-cloak] {
+    display: none;
 }
+
+.v-btn:focus {
+    outline: 0;
+}
+
+.arrow::after,
+.arrow::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    content: "";
+    vertical-align: middle;
+}
+.arrow::before {
+    width: 30px;
+    height: 1px;
+    left: 83%;
+    background: #fff;
+    opacity: 1;
+}
+.arrow::after {
+    left: 88.5%;
+    width: 12px;
+    height: 1px;
+    background: #fff;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    top: -8px;
+    opacity: 1;
+}
+
+//padding
+.p-0 {
+    padding: 0;
+}
+
+
+//vue-transition
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }

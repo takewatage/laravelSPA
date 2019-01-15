@@ -1,12 +1,48 @@
+//メディアクエリ
 $breakpoints: (
     "ss": "screen and (max-width: 320px)",
     "sm": "screen and (max-width: 576px)",
-    "mb": "screen and (max-width: 768px)",
-    "tab": "screen and (max-width: 1088px)"
+    "md": "screen and (max-width: 768px)",
+    "lg": "screen and (max-width: 992px)",
+    "xl": "screen and (max-width: 1200px)"
 ) !default;
 
 @mixin mq($breakpoint: mb) {
     @media #{map-get($breakpoints, $breakpoint)} {
         @content;
     }
+}
+
+//...省略
+@mixin line-truncate(){
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@mixin lines-truncate($lines: 2){
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $lines;
+}
+
+
+//flex
+@mixin flex-center() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+//fontsize
+@mixin fs($size: 16) {
+    font-size: $size + px;
+}
+
+//position
+@mixin right-top() {
+    position: fixed;
+    top: 0;
+    right: 0;
 }
