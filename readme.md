@@ -9,7 +9,7 @@
 
 ## Laravel + Vue + vagrant
 
-laravelとvue.jsを使ってSPAでなんか作る
+laravelとvue.jsを使ってSPA練習
 
 # 環境構築
 ## VirtualBoxインストール
@@ -26,7 +26,7 @@ vagrant box add laravel/homestead
 laravel/homestead (virtualbox, 6.3.0)
 ```
 
-任意のディレクトリ作成今回はD:にそのままいれたんご
+任意のディレクトリ作成今回はD:にそのまま
 ```
 >cd D: 
 >git clone https://github.com/laravel/homestead.git Homestead
