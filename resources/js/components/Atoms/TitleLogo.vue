@@ -1,7 +1,7 @@
 <template>
     <div>
         <a class="flex-center title-logo" href="/">
-            KoDo
+            Laravel SPA
         </a>
     </div>
 </template>
