@@ -11,6 +11,22 @@
 
 laravelとvue.jsを使ってSPA練習
 
+# ビルドまで
+```
+git clone このリポジトリ
+composer install
+composer up
+npm install
+npm run dev or npm run watch
+```
+
+ローカル環境の場合
+composer と laravelをインストールする
+サーバー起動
+``` $ php artisan serve ```
+ローカルサーバがポート8000番で立ち上がる
+http://localhost:8000/
+
 # 環境構築
 ## VirtualBoxインストール
 ``` https://www.virtualbox.org/wiki/Downloads```
