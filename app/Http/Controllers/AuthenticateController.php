@@ -27,12 +27,32 @@ class AuthenticateController extends Controller
         $user = User::where('email', $request->email)->first();
 
         // all good so return the token
-        return response()->json(compact('user', 'token'));
+        // return response()->json(compact('user', 'token'));
+        return $this->respondWithToken($token, $user);
     }
 
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+    }
+
+    protected function guard()
+    {
+        return \Auth::guard('api');
+    }
+ 
     public function getCurrentUser()
     {
-        $user = JWTAuth::parseToken()->authenticate();
-        return response()->json(compact('user'));
+        return \Auth::user();
+    }
+
+    protected function respondWithToken($token, $user)
+    {
+        return response()->json([
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth("api")->factory()->getTTL() * 60,
+            'user' => $user
+        ]);
     }
 }

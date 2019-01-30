@@ -15,9 +15,12 @@ use Illuminate\Http\Request;
 
 
 Route::group(['middleware' => 'api'], function () {
-    Route::post('authenticate',  'AuthenticateController@authenticate');
+    Route::post('login',  'AuthenticateController@authenticate');
+});
 
-    Route::group(['middleware' => 'jwt.auth'], function () {
-        Route::get('me',  'AuthenticateController@getCurrentUser');
-    });
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::get('/getCurrentUser', 'AuthenticateController@getCurrentUser');
+    Route::post('/logout', 'AuthenticateController@logout');
+
+    Route::get('user/getAuth', 'UserController@getAuth');
 });

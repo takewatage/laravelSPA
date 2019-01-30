@@ -5,8 +5,8 @@
             <div class="container">
                 <h1>LOVE THE LIFE YOU LIVE. <br />LIVE THE LIFE YOU LOVE.</h1>
                 <p>
-                    Kodoはチームを活性化させる日報共有ツールです。
-                    <br />チームのみんなが自分らしく働くために、Kodoで毎日をシェアしましょう。
+                    testtesttesttesttest
+                    <br />testtesttesttest
                 </p>
             </div>
             <center>
@@ -28,23 +28,69 @@
         </div>
 
         <vs-popup class="holamundo"  title="ろぐいん" :active.sync="popupActivo">
-            <p>
-                ちょっとまっててね
-            </p>
+            <p v-show="isError">認証に失敗しました。</p>
+            <form @submit.prevent="login">
+                <vs-input label="Email" placeholder="email" v-model="user.email"/>
+                <vs-input type="password" label="Password" placeholder="password" v-model="user.password"/>
+                <vs-button color="primary" type="filled">ログイン</vs-button>
+            </form>
         </vs-popup>
     </div>
 </template>
 
 <script>
-    import AppHeader from "../components/Organisms/AppHeader";
+    import { mapActions, mapGetters } from 'vuex'
+    import { action, getter } from '~/store/types'
+    import User from '~/models/User.js'
+    // import {HasError} from 'vform'
+
+    import AppHeader from "~/components/Organisms/AppHeader";
 
     export default {
         name: "welcome",
 
         data() {
             return {
-                popupActivo: false
+                popupActivo: false,
+                user: new User(),
+                busy: false,
+                isError: false
             };
+        },
+
+        methods: {
+            ...mapActions([
+                action.AUTH_SAVE_TOKEN,
+                action.AUTH_FETCH_USER,
+                action.UPDATE_LOGIN_STATE
+            ]),
+
+            async login () {
+                this.isError = false
+                try {
+                    const {data: {access_token}} = await this.user.post('/api/login')
+
+                    if (!access_token) {
+                        this.isError = true
+                        return
+                    }
+
+                    this[action.AUTH_SAVE_TOKEN]({
+                        token: access_token,
+                    })
+
+                    await this[action.AUTH_FETCH_USER]()
+
+                    await this.$nextTick()
+                    location.reload()
+
+                } catch(e) {
+                    this.isError = true
+                    throw new Error(e)
+
+                } finally {
+                }
+            }
         },
 
         components: {

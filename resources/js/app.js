@@ -6,6 +6,7 @@
 import Vue from "vue";
 import router from "./router";
 import App from "./components/App";
+import store from './store'
 import Vuesax from "vuesax";
 
 import "vuesax/dist/vuesax.css"; //Vuesax styles
@@ -24,5 +25,6 @@ require("./bootstrap");
 
 window.Vue = new Vue({
     router,
+    store,
     ...App
 });
