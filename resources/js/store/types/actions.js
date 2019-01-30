@@ -1,0 +1,6 @@
+//auth.js
+export const AUTH_SAVE_TOKEN = 'AUTH_SAVE_TOKEN'
+export const AUTH_FETCH_USER = 'AUTH_FETCH_USER'
+export const AUTH_LOGOUT = 'AUTH_LOGOUT'
+export const AUTH_CLEAR = 'AUTH_CLEAR'
+export const UPDATE_LOGIN_STATE = 'UPDATE_LOGIN_STATE'
