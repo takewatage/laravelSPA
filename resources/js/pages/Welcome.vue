@@ -80,6 +80,7 @@
                     })
 
                     await this[action.AUTH_FETCH_USER]()
+                    this[action.UPDATE_LOGIN_STATE](true)
 
                     await this.$nextTick()
                     location.reload()
